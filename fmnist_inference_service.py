@@ -44,7 +44,7 @@ transform = Compose([
 @app.post("/predict", response_model=InferenceResponse)
 def predict(request: InferenceRequest):
     """
-    Accepts a base64 encoded image and returns the predicted class.
+    Accepts a single base64 encoded image and returns the predicted class and confidence.
     """
     img_bytes = base64.b64decode(request.image_base64)
     img = Image.open(io.BytesIO(img_bytes)).convert("L")
